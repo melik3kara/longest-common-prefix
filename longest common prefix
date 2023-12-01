@@ -1,0 +1,37 @@
+public String longestCommonPrefix(String[] strs) 
+    {
+        boolean control = true;
+        String pref = "";
+        int minSize = strs[0].length();
+        for(int j = 0; j < strs.length; j ++)
+        {
+            if(minSize>strs[j].length())
+            {
+                minSize = strs[j].length();
+            }
+        }
+        int i = 0;
+        while(control&&minSize>0)
+        {
+            boolean check = true;
+            if(i>=minSize){return pref;}
+            for(int k = 1; k < strs.length; k ++)
+            {
+                if(strs[k].charAt(i)!=strs[k-1].charAt(i))
+                {
+                    check = false;
+                }
+            }
+            if(check)
+            {
+                pref += strs[0].charAt(i);
+            }
+            else
+            {
+                control = false;
+            }
+            i++;
+        }
+        return pref;
+    }
+}
